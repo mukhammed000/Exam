@@ -1,0 +1,147 @@
+syntax = "proto3";
+
+package learning;
+
+option go_package = "/learning";
+
+service LearningService {
+    rpc GetAllLanguages(EmptyReq) returns (GetAllLanguagesResp);
+    rpc StartLearningLanguage(StartLearningReq) returns (StartLearningResp);
+    rpc GetLessonInfo(ParticipateLessonReq) returns (ParticipateLessonResp);
+    rpc CompleteLesson(CompleteLessonReq) returns (CompleteLessonResp);
+    rpc StartExercise(StartExerciceReq) returns (StartExerciceResp);
+    rpc AnswerExercise(AnswerExerciseReq) returns (AnswerExerciseResp);
+    rpc GetAllVocabulary(GetAllVocabularyReq) returns (GetAllVocabularyResp);
+    rpc AddNewWord(AddNewWordReq) returns(AddNewWordResp);
+    rpc GetLanguageStats(GetLanguageStatsReq) returns (GetLanguageStatsResp);
+}
+
+message GetLanguageStatsReq{
+    string language_id = 1;
+}
+
+message GetLanguageStatsResp{
+    Languages language = 1;
+    Statistics stats = 2;
+}
+
+message Statistics{
+    int64 total_learning_time = 1;
+    int64 avarage_learning_time = 2;
+    int64 total_lessons_completed = 3;
+    int64 accurancy_rate = 4;
+    string most_challenging_skill = 5;
+    string strongest_skill = 6;
+}
+
+message Languages {
+    string language_id = 1;
+    string language_code = 2;
+    string name = 3;
+    string flag_emoji = 4;
+}
+
+message Lessons {
+    string lesson_id = 1;
+    string lesson_title = 2;
+    string level = 3;
+    bool completed = 4;
+}
+
+message EmptyReq{}
+
+message GetAllLanguagesResp {
+    repeated Languages languages = 1;
+}
+
+message StartLearningReq {
+    string language = 1;
+    string level = 2;
+    string user_id = 3;
+}
+
+
+message StartLearningResp {
+    string message = 1;
+    string lesson_id = 2;
+    Lessons next_lesson = 3;
+}
+
+message Content {
+    Lessons lessons = 1;
+    string text = 2;
+}
+
+message Vocabulary {
+    string word = 1;
+    string translation = 2;
+    string example_lessons = 3;
+}
+
+message ParticipateLessonResp {
+    Languages language = 1;
+    Lessons lesson = 2;
+    string theme = 3;
+    Vocabulary vocabulary = 4;
+}
+
+message ParticipateLessonReq {
+    string lesson_id = 1;
+}
+
+message CompleteLessonResp {
+    string text = 1;
+    int64 exp_earned = 2;
+    Lessons next_lesson = 3;
+}
+
+message CompleteLessonReq{
+    string lesson_id = 1;
+};
+
+message Exercise{
+    string exercise_id = 1;
+    string type = 2;
+    string questions = 3;
+    string correct_answer = 4;
+};
+
+message StartExerciceReq{
+    string exercise_id = 1;
+};
+
+message StartExerciceResp{
+    Languages language = 1;
+    Lessons lesson = 2;
+    Exercise exercise = 3;
+};
+
+message AnswerExerciseReq{
+    string exercise_id = 1;
+    string answer = 2;
+};
+
+message AnswerExerciseResp{
+    bool isCorrect = 1;
+    string answer = 2;
+    int64 earned_exp = 3;
+};
+
+message GetAllVocabularyReq{
+    string language_id = 1;
+};
+
+message GetAllVocabularyResp{
+    Languages language = 1;
+    Vocabulary vocabulary = 2;
+};
+
+message AddNewWordReq{
+    Vocabulary vocabulary = 1;
+};
+
+message AddNewWordResp{
+    string language_id = 1;
+    string message = 2;
+    string word_id = 3;
+};

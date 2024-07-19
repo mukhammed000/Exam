@@ -1,0 +1,127 @@
+syntax = "proto3";
+
+package users;
+
+option go_package = "users/";
+
+service UsersService{
+    rpc RegisterUser(RegisterReq) returns (RegisterResp);
+    rpc LogIn(LogInReq) returns (LogInResp);
+    rpc GetProfileInfo(GetProfileInfoReq) returns (GetProfileInfoResp);
+    rpc UpdateProfile(UpdateProfileReq) returns (UpdateProfileResp);
+    rpc RefreshToken(RefreshTokenRequest) returns (RefreshTokenResponse);
+    rpc ChangePassword(ChangePasswordReq) returns (Empty);
+    rpc ResetPassword(ResetPasswordReq) returns (Empty);
+    rpc PasswordRecovery(RecoveryPasswordReq) returns (Empty);
+    rpc GetUserSettings(GetUsersSettingsReq) returns(GetUserSettingsResp);
+    rpc UpdateSettings(UpdateSettingsReq) returns (Empty);
+    // rpc UserSettings() returns ();        This should be written  Create
+};
+
+message RegisterReq{
+    string username = 1;
+    string email = 2;
+    string password = 3;
+    string full_name = 4;
+    string role = 5;
+    string native_language = 6;
+    string token = 7;
+};
+
+message RegisterResp{
+    string user_id = 1;
+    string access_token = 3;
+    string refresh_token = 4; 
+};
+
+message LogInReq{
+    string username = 1;
+    string password = 2;
+};
+
+message LogInResp{
+    string token = 1;
+    string expires_at = 2;
+};
+
+message GetProfileInfoReq{
+    string user_id = 1;
+};
+
+message GetProfileInfoResp{
+    string user_id = 1;
+    string username = 2;
+    string email = 3;
+    string full_name = 4;
+    string native_language = 5;
+    repeated string learning_languages = 6;
+    string created_at = 7;
+};
+
+message UpdateProfileReq{
+    string user_id = 1;
+    string full_name = 2;
+    string native_language = 3;
+    repeated string learning_languages = 4;
+};
+
+message RefreshTokenRequest{
+    string token = 1;
+};
+
+message RefreshTokenResponse {
+    bool success = 1;
+    string message = 2;
+    string token = 3;
+};
+
+message UpdateProfileResp{
+    string user_id = 1;
+    string full_name = 2;
+    string username = 3;
+    string email = 4;
+    string native_language = 6;
+    string created_at = 7;
+};
+
+message ChangePasswordReq{
+    string user_id = 1;
+    string current_password = 2;
+    string new_password = 3;
+};
+
+message ResetPasswordReq{
+    string email = 1;
+};
+
+message RecoveryPasswordReq{
+    string user_id = 1;
+    string reset_token = 2;
+    string new_password = 3;
+};
+
+message GetUsersSettingsReq{
+    string user_id = 1;
+};
+
+message GetUserSettingsResp{
+    string daily_goal = 1;
+    bool notifications_enabled = 2;
+    string preferred_learning_time = 3;
+    string difficulty_level = 4;
+};
+
+message UpdateSettingsReq{
+    string user_id = 1;
+    string daily_goal = 2;
+    bool   notifications_enabled = 3;
+    string preferred_learning_time = 4;
+    string difficulty_level = 5;
+};
+
+message Empty{
+    bool isTrue = 1;
+    string text = 2;
+};
+
+

@@ -1,0 +1,38 @@
+p, unauthorized, /swagger/index.html, GET
+p, unauthorized, /swagger/swagger-ui.css, GET
+p, unauthorized, /swagger/swagger-ui-bundle.js, GET
+p, unauthorized, /swagger/favicon-32x32.png, GET
+p, unauthorized, /swagger/favicon-16x16.png, GET
+p, unauthorized, /swagger/swagger-ui-standalone-preset.js, GET
+p, unauthorized, /swagger/swagger/doc.json, GET
+p, unauthorized, /swagger/index.html, GET
+p, unauthorized, /favicon.ico, GET
+
+p, unauthorized, /auth/login, POST
+p, unauthorized, /auth/register, POST
+p, user, /auth/refreshTokenRequest, POST
+p, user, /auth/forgot-password, POST
+p, user, /auth/reset-password, POST
+
+p, user, /users/change-password, POST
+p, user, /users/profile, PUT
+p, user, /users/profile/:user_id, GET
+p, user, /users/settings/:user_id, GET
+p, user, /users/settings, PUT
+
+p, user, /learning/all_languages, GET
+p, user, /learning/start_lesson, POST
+p, user, /learning/participate_lesson/:lesson_id, GET
+p, user, /learning/complete_lesson/:id, POST
+p, user, /learning/start_exercise/:exercise_id, GET
+p, user, /learning/submit_answer, POST
+p, user, /learning/list_vocabulary/:language_id, GET
+p, user, /learning/add_word, POST
+
+p, user, /progress/by_language/:language_id/:user_id, GET
+p, user, /progress/leader/:language_id, GET
+p, user, /progress/skills/:language_id/:user_id, GET
+p, user, /progress/daily/:user_id, GET
+p, user, /progress/weekly/:user_id, GET
+p, user, /progress/monthly/:user_id, GET
+p, user, /progress/achievements/:user_id, GET

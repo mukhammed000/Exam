@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  # Your main application service
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - redis
+      - kafka
+    environment:
+      - REDIS_ADDR=redis:6379
+      - KAFKA_BROKERS=kafka:9092
+
+  # Kafka service
+  kafka:
+    image: wurstmeister/kafka:latest
+    ports:
+      - "29092:29092"   # External port
+      - "9092:9092"     # Internal port for Kafka clients
+    environment:
+      KAFKA_ADVERTISED_LISTENERS: INSIDE://kafka:29092,OUTSIDE://localhost:9092
+      KAFKA_LISTENER_NAME: INSIDE
+      KAFKA_LISTENERS: INSIDE://0.0.0.0:29092,OUTSIDE://0.0.0.0:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INSIDE:PLAINTEXT,OUTSIDE:PLAINTEXT
+      KAFKA_LISTENER_SECURITY_PROTOCOL: PLAINTEXT
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+
+  # Zookeeper service
+  zookeeper:
+    image: wurstmeister/zookeeper:latest
+    ports:
+      - "2182:2181"   # Change external port to avoid conflict
+
+  # Redis service
+  redis:
+    image: redis:latest
+    ports:
+      - "6380:6379"   # Change external port to avoid conflict

@@ -1,0 +1,107 @@
+  syntax = "proto3";
+
+  package progress;
+
+  option go_package = "/";
+
+  service ProgressService {
+    rpc GetProgressByLanguage(ProgressByLanguageReq) returns (ProgressByLanguageResponse);
+    rpc GetLeaderboardByLanguage(ProgressByLanguageRequest) returns (LeaderboardResponse);
+    rpc GetSkillsByLanguage(ProgressByLanguageReq) returns (SkillsResponse);
+    rpc GetDailyProgress(UserId) returns (DailyProgressResponse);
+    rpc GetWeeklyProgress(UserId) returns (WeeklyProgressResponse);
+    rpc GetMonthlyProgress(UserId) returns (MonthlyProgressResponse);
+    rpc GetAchievements(UserId) returns (AchievementsResponse);
+  }
+
+  message ProgressByLanguageRequest {
+    string language_id = 1;
+  }
+
+  message ProgressByLanguageReq{
+      string language_id = 1;
+      string user_id = 2;
+  }
+
+  message ProgressByLanguageResponse {
+    string language = 1;
+    string level = 2;
+    int64 xp = 3;
+    int64 lessons_completed = 4;
+    int64 vocabulary_learned = 5;
+    int64 grammar_rules_mastered = 6;
+    int64 listening_comprehension = 7;
+    int64 speaking_fluency = 8;
+  }
+
+  message DailyProgressResponse {
+    string date = 1;
+    int64 xp_earned = 2;
+    int64 lessons_completed = 3;
+    int64 new_words_learned = 4;
+    int64 minutes_practiced = 5;
+    int64 streak_days = 6;
+  }
+
+  message WeeklyProgressResponse {
+    string week_start = 1;
+    string week_end = 2;
+    int64 total_xp_earned = 3;
+    int64 lessons_completed = 4;
+    int64 new_words_learned = 5;
+    int64 total_minutes_practiced = 6;
+    string most_active_day = 7;
+  }
+
+  message MonthlyProgressResponse {
+    string month = 1;
+    int64 total_xp_earned = 2;
+    int64 lessons_completed = 3;
+    int64 new_words_learned = 4;
+    int64 total_minutes_practiced = 5;
+    string most_improved_skill = 6;
+  }
+
+  message Achievement {
+    string id = 1;
+    string title = 2;
+    string description = 3;
+    string earned_at = 4;
+  }
+
+  message AchievementsResponse {
+    repeated Achievement achievements = 1;
+  }
+
+  message LeaderboardEntry {
+    int64 rank = 1;
+    string username = 2;
+    int64 xp = 3;
+    string level = 4;
+  }
+
+  message LeaderboardResponse {
+    string language = 1;
+    repeated LeaderboardEntry leaderboard = 2;
+    int64 user_rank = 3;
+  }
+
+  message Skill {
+    string name = 1;
+    int64 level = 2;
+    int64 progress_to_next_level = 3;
+    int64 words_learned = 4;
+    int64 rules_mastered = 5;
+    int64 comprehension_rate = 6;
+    int64 fluency_rate = 7;
+  }
+
+  message SkillsResponse {
+    string language = 1;
+    repeated Skill skills = 2;
+  }
+
+  message UserId{
+      string id = 1;
+  }
+

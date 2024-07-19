@@ -1,0 +1,1205 @@
+basePath: /
+definitions:
+  __.Achievement:
+    properties:
+      description:
+        type: string
+      earned_at:
+        type: string
+      id:
+        type: string
+      title:
+        type: string
+    type: object
+  __.AchievementsResponse:
+    properties:
+      achievements:
+        items:
+          $ref: '#/definitions/__.Achievement'
+        type: array
+    type: object
+  __.AddNewWordReq:
+    properties:
+      vocabulary:
+        $ref: '#/definitions/__.Vocabulary'
+    type: object
+  __.AddNewWordResp:
+    properties:
+      language_id:
+        type: string
+      message:
+        type: string
+      word_id:
+        type: string
+    type: object
+  __.AnswerExerciseReq:
+    properties:
+      answer:
+        type: string
+      exercise_id:
+        type: string
+    type: object
+  __.AnswerExerciseResp:
+    properties:
+      answer:
+        type: string
+      earned_exp:
+        type: integer
+      isCorrect:
+        type: boolean
+    type: object
+  __.ChangePasswordReq:
+    properties:
+      current_password:
+        type: string
+      new_password:
+        type: string
+      user_id:
+        type: string
+    type: object
+  __.CompleteLessonReq:
+    properties:
+      lesson_id:
+        type: string
+    type: object
+  __.CompleteLessonResp:
+    properties:
+      exp_earned:
+        type: integer
+      next_lesson:
+        $ref: '#/definitions/__.Lessons'
+      text:
+        type: string
+    type: object
+  __.DailyProgressResponse:
+    properties:
+      date:
+        type: string
+      lessons_completed:
+        type: integer
+      minutes_practiced:
+        type: integer
+      new_words_learned:
+        type: integer
+      streak_days:
+        type: integer
+      xp_earned:
+        type: integer
+    type: object
+  __.Empty:
+    properties:
+      isTrue:
+        type: boolean
+      text:
+        type: string
+    type: object
+  __.Exercise:
+    properties:
+      correct_answer:
+        type: string
+      exercise_id:
+        type: string
+      questions:
+        type: string
+      type:
+        type: string
+    type: object
+  __.GetAllLanguagesResp:
+    properties:
+      languages:
+        items:
+          $ref: '#/definitions/__.Languages'
+        type: array
+    type: object
+  __.GetProfileInfoResp:
+    properties:
+      created_at:
+        type: string
+      email:
+        type: string
+      full_name:
+        type: string
+      learning_languages:
+        items:
+          type: string
+        type: array
+      native_language:
+        type: string
+      user_id:
+        type: string
+      username:
+        type: string
+    type: object
+  __.GetUserSettingsResp:
+    properties:
+      daily_goal:
+        type: string
+      difficulty_level:
+        type: string
+      notifications_enabled:
+        type: boolean
+      preferred_learning_time:
+        type: string
+    type: object
+  __.Languages:
+    properties:
+      flag_emoji:
+        type: string
+      language_code:
+        type: string
+      language_id:
+        type: string
+      name:
+        type: string
+    type: object
+  __.LeaderboardEntry:
+    properties:
+      level:
+        type: string
+      rank:
+        type: integer
+      username:
+        type: string
+      xp:
+        type: integer
+    type: object
+  __.LeaderboardResponse:
+    properties:
+      language:
+        type: string
+      leaderboard:
+        items:
+          $ref: '#/definitions/__.LeaderboardEntry'
+        type: array
+      user_rank:
+        type: integer
+    type: object
+  __.Lessons:
+    properties:
+      completed:
+        type: boolean
+      lesson_id:
+        type: string
+      lesson_title:
+        type: string
+      level:
+        type: string
+    type: object
+  __.LogInReq:
+    properties:
+      password:
+        type: string
+      username:
+        type: string
+    type: object
+  __.LogInResp:
+    properties:
+      expires_at:
+        type: string
+      token:
+        type: string
+    type: object
+  __.MonthlyProgressResponse:
+    properties:
+      lessons_completed:
+        type: integer
+      month:
+        type: string
+      most_improved_skill:
+        type: string
+      new_words_learned:
+        type: integer
+      total_minutes_practiced:
+        type: integer
+      total_xp_earned:
+        type: integer
+    type: object
+  __.ParticipateLessonResp:
+    properties:
+      language:
+        $ref: '#/definitions/__.Languages'
+      lesson:
+        $ref: '#/definitions/__.Lessons'
+      theme:
+        type: string
+      vocabulary:
+        $ref: '#/definitions/__.Vocabulary'
+    type: object
+  __.ProgressByLanguageResponse:
+    properties:
+      grammar_rules_mastered:
+        type: integer
+      language:
+        type: string
+      lessons_completed:
+        type: integer
+      level:
+        type: string
+      listening_comprehension:
+        type: integer
+      speaking_fluency:
+        type: integer
+      vocabulary_learned:
+        type: integer
+      xp:
+        type: integer
+    type: object
+  __.RefreshTokenResponse:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+      token:
+        type: string
+    type: object
+  __.RegisterReq:
+    properties:
+      email:
+        type: string
+      full_name:
+        type: string
+      native_language:
+        type: string
+      password:
+        type: string
+      role:
+        type: string
+      token:
+        type: string
+      username:
+        type: string
+    type: object
+  __.RegisterResp:
+    properties:
+      access_token:
+        type: string
+      refresh_token:
+        type: string
+      user_id:
+        type: string
+    type: object
+  __.ResetPasswordReq:
+    properties:
+      email:
+        type: string
+    type: object
+  __.Skill:
+    properties:
+      comprehension_rate:
+        type: integer
+      fluency_rate:
+        type: integer
+      level:
+        type: integer
+      name:
+        type: string
+      progress_to_next_level:
+        type: integer
+      rules_mastered:
+        type: integer
+      words_learned:
+        type: integer
+    type: object
+  __.SkillsResponse:
+    properties:
+      language:
+        type: string
+      skills:
+        items:
+          $ref: '#/definitions/__.Skill'
+        type: array
+    type: object
+  __.StartExerciceResp:
+    properties:
+      exercise:
+        $ref: '#/definitions/__.Exercise'
+      language:
+        $ref: '#/definitions/__.Languages'
+      lesson:
+        $ref: '#/definitions/__.Lessons'
+    type: object
+  __.StartLearningReq:
+    properties:
+      language:
+        type: string
+      level:
+        type: string
+      user_id:
+        type: string
+    type: object
+  __.StartLearningResp:
+    properties:
+      lesson_id:
+        type: string
+      message:
+        type: string
+      next_lesson:
+        $ref: '#/definitions/__.Lessons'
+    type: object
+  __.UpdateProfileReq:
+    properties:
+      full_name:
+        type: string
+      learning_languages:
+        items:
+          type: string
+        type: array
+      native_language:
+        type: string
+      user_id:
+        type: string
+    type: object
+  __.UpdateProfileResp:
+    properties:
+      created_at:
+        type: string
+      email:
+        type: string
+      full_name:
+        type: string
+      native_language:
+        type: string
+      user_id:
+        type: string
+      username:
+        type: string
+    type: object
+  __.UpdateSettingsReq:
+    properties:
+      daily_goal:
+        type: string
+      difficulty_level:
+        type: string
+      notifications_enabled:
+        type: boolean
+      preferred_learning_time:
+        type: string
+      user_id:
+        type: string
+    type: object
+  __.Vocabulary:
+    properties:
+      example_lessons:
+        type: string
+      translation:
+        type: string
+      word:
+        type: string
+    type: object
+  __.WeeklyProgressResponse:
+    properties:
+      lessons_completed:
+        type: integer
+      most_active_day:
+        type: string
+      new_words_learned:
+        type: integer
+      total_minutes_practiced:
+        type: integer
+      total_xp_earned:
+        type: integer
+      week_end:
+        type: string
+      week_start:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: Voting service
+  version: "1.0"
+paths:
+  /auth/forgot-password:
+    post:
+      consumes:
+      - application/json
+      description: Request password reset for a registered user
+      parameters:
+      - description: User email for password reset
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/__.ResetPasswordReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/__.Empty'
+        "400":
+          description: Error while requesting password reset
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Forgot password
+      tags:
+      - Auth
+  /auth/login:
+    post:
+      consumes:
+      - application/json
+      description: Log in a registered user with username and password
+      parameters:
+      - description: User login credentials
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/__.LogInReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/__.LogInResp'
+        "400":
+          description: Error while logging in
+          schema:
+            type: string
+        "500":
+          description: Error while logging in
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Log in user
+      tags:
+      - Auth
+  /auth/refreshTokenRequest:
+    post:
+      consumes:
+      - application/json
+      description: Refresh access token using refresh token
+      parameters:
+      - description: Refresh token
+        in: query
+        name: token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/__.RefreshTokenResponse'
+        "400":
+          description: Error while refreshing the token
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Refresh access token
+      tags:
+      - Auth
+  /auth/register:
+    post:
+      consumes:
+      - application/json
+      description: Register a new user with the provided details
+      parameters:
+      - description: User registration details
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/__.RegisterReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/__.RegisterResp'
+        "400":
+          description: Error while registering
+          schema:
+            type: string
+        "500":
+          description: Error while registering
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Register a new user
+      tags:
+      - Auth
+  /auth/reset-password:
+    post:
+      consumes:
+      - application/json
+      description: Request password reset for a registered user
+      parameters:
+      - description: User email for password reset
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/__.ResetPasswordReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/__.Empty'
+        "400":
+          description: Error while requesting password reset
+          schema:
+            type: string
+        "500":
+          description: Error while requesting password reset
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Reset password
+      tags:
+      - Auth
+  /learning/add_word:
+    post:
+      consumes:
+      - application/json
+      description: Add a new word to the vocabulary for the current language
+      parameters:
+      - description: New word details
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/__.AddNewWordReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/__.AddNewWordResp'
+        "400":
+          description: Bad request
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Add a new word
+      tags:
+      - Learning
+  /learning/all_languages:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a list of all languages available for learning
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: List of languages
+          schema:
+            items:
+              $ref: '#/definitions/__.GetAllLanguagesResp'
+            type: array
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get all available languages
+      tags:
+      - Learning
+  /learning/complete_lesson/{id}:
+    post:
+      consumes:
+      - application/json
+      description: Complete the current lesson and update progress
+      parameters:
+      - description: Lesson completion details
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/__.CompleteLessonReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/__.CompleteLessonResp'
+        "400":
+          description: Bad request
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Complete a lesson
+      tags:
+      - Learning
+  /learning/list_vocabulary/{language_id}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a list of all vocabulary for the current language
+      parameters:
+      - description: Language ID
+        in: path
+        name: language_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: List of vocabulary
+          schema:
+            items:
+              $ref: '#/definitions/__.Vocabulary'
+            type: array
+        "400":
+          description: Bad request
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get all vocabulary
+      tags:
+      - Learning
+  /learning/participate_lesson/{lesson_id}:
+    get:
+      consumes:
+      - application/json
+      description: Participate in an ongoing lesson and retrieve lesson details
+      parameters:
+      - description: Lesson ID
+        in: path
+        name: lesson_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/__.ParticipateLessonResp'
+        "400":
+          description: Bad request
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Participate in a lesson
+      tags:
+      - Learning
+  /learning/start_exercise/{exercise_id}:
+    get:
+      consumes:
+      - application/json
+      description: Start a new exercise for the current lesson
+      parameters:
+      - description: Exercise ID
+        in: path
+        name: exercise_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/__.StartExerciceResp'
+        "400":
+          description: Bad request
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Start a new exercise
+      tags:
+      - Learning
+  /learning/start_lesson:
+    post:
+      consumes:
+      - application/json
+      description: Start a new lesson for the selected language
+      parameters:
+      - description: Lesson start details
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/__.StartLearningReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/__.StartLearningResp'
+        "400":
+          description: Bad request
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Start a new lesson
+      tags:
+      - Learning
+  /learning/submit_answer:
+    post:
+      consumes:
+      - application/json
+      description: Submit an answer for the current exercise
+      parameters:
+      - description: Answer submission details
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/__.AnswerExerciseReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/__.AnswerExerciseResp'
+        "400":
+          description: Bad request
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Submit an answer for an exercise
+      tags:
+      - Learning
+  /progress/achievements/{user_id}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve the achievements of a user
+      parameters:
+      - description: User ID
+        in: path
+        name: user_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/__.AchievementsResponse'
+        "400":
+          description: Bad request
+          schema:
+            type: string
+        "404":
+          description: Not found
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get user achievements
+      tags:
+      - Progress
+  /progress/by_language/{language_id}/{user_id}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve the progress of a user for a specific language and user
+        ID
+      parameters:
+      - description: Language ID
+        in: path
+        name: language_id
+        required: true
+        type: string
+      - description: User ID
+        in: path
+        name: user_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/__.ProgressByLanguageResponse'
+        "400":
+          description: Bad request
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get user progress by language and user ID
+      tags:
+      - Progress
+  /progress/daily/{user_id}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve the daily progress of a user
+      parameters:
+      - description: User ID
+        in: query
+        name: user_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/__.DailyProgressResponse'
+        "400":
+          description: Bad request
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get daily progress
+      tags:
+      - Progress
+  /progress/leader/{user_id}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve the leaderboard for a specific language
+      parameters:
+      - description: Language ID
+        in: query
+        name: language_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/__.LeaderboardResponse'
+        "400":
+          description: Bad request
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get leaderboard by language
+      tags:
+      - Progress
+  /progress/monthly/{user_id}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve the monthly progress of a user
+      parameters:
+      - description: User ID
+        in: query
+        name: user_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/__.MonthlyProgressResponse'
+        "400":
+          description: Bad request
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get monthly progress
+      tags:
+      - Progress
+  /progress/skills/{language_id}/{user_id}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve the skills of a user for a specific language
+      parameters:
+      - description: Language ID
+        in: query
+        name: language_id
+        required: true
+        type: string
+      - description: User ID
+        in: path
+        name: user_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/__.SkillsResponse'
+        "400":
+          description: Bad request
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get user skills by language
+      tags:
+      - Progress
+  /progress/weekly/{user_id}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve the weekly progress of a user
+      parameters:
+      - description: User ID
+        in: query
+        name: user_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/__.WeeklyProgressResponse'
+        "400":
+          description: Bad request
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get weekly progress
+      tags:
+      - Progress
+  /users/change-password:
+    post:
+      consumes:
+      - application/json
+      description: Change password for a user
+      parameters:
+      - description: User password change details
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/__.ChangePasswordReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/__.Empty'
+        "400":
+          description: Error while changing the password
+          schema:
+            type: string
+        "500":
+          description: Error while changing the password
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Change user password
+      tags:
+      - Users
+  /users/profile:
+    put:
+      consumes:
+      - application/json
+      description: Update profile information for a user
+      parameters:
+      - description: Updated user profile details
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/__.UpdateProfileReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/__.UpdateProfileResp'
+        "400":
+          description: Error while updating profile
+          schema:
+            type: string
+        "500":
+          description: Error while updating profile
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Update user profile
+      tags:
+      - Users
+  /users/profile/{user_id}:
+    get:
+      consumes:
+      - application/json
+      description: Get profile information for a user
+      parameters:
+      - description: User ID
+        in: path
+        name: user_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/__.GetProfileInfoResp'
+        "400":
+          description: Error while getting profile info
+          schema:
+            type: string
+        "500":
+          description: Error while getting profile info
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get user profile information
+      tags:
+      - Users
+  /users/settings:
+    put:
+      consumes:
+      - application/json
+      description: Update settings for a user
+      parameters:
+      - description: Updated user settings details
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/__.UpdateSettingsReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/__.Empty'
+        "400":
+          description: Error while updating settings
+          schema:
+            type: string
+        "500":
+          description: Error while updating settings
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Update user settings
+      tags:
+      - Users
+  /users/settings/{user_id}:
+    get:
+      consumes:
+      - application/json
+      description: Get settings for a user
+      parameters:
+      - description: User ID
+        in: path
+        name: user_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/__.GetUserSettingsResp'
+        "400":
+          description: Error while getting user's settings
+          schema:
+            type: string
+        "500":
+          description: Error while getting user's settings
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get user settings
+      tags:
+      - Users
+securityDefinitions:
+  BearerAuth:
+    in: header
+    name: Authourization
+    type: apiKey
+swagger: "2.0"
